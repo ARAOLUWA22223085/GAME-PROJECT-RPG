@@ -167,6 +167,9 @@ public void getPlayerImage() {
 				
 				System.out.println("You are now able to run faster!");
 				
+				gp.ui.showMessage("You are now able to run faster!");
+
+				
 				if (hashellStompers >= 0) 
 				{
 					speed = speed + (speed/2);
@@ -183,24 +186,28 @@ public void getPlayerImage() {
 				
 				hasrubyKey++;
 
-				System.out.println("You have obtained a ruby Key!");
-				System.out.println("you can probably use it somewhere in this courtyard...");
+//				System.out.println("You have obtained a ruby Key!");
+//				System.out.println("you can probably use it somewhere in this courtyard...");
 				System.out.println("Keys currently held: " + hasrubyKey);
 
 				gp.obj[i] = null;
+				
+				gp.ui.showMessage("You have obtained a Ruby Key!");
+//				gp.ui.showMessage("you can probably use it somewhere in this courtyard...");
+				
 				
 				break;
 				
 			case "OBJ_doorFrontClosed":
 				
 				if (hasrubyKey == 0) {
-					System.out.println("hmm, the door seems to be locked... Maybe a key is somewhere around here...");
+					gp.ui.showMessage("The door seems to be locked... Maybe a key is somewhere around here...");
 				}
 				if (hasrubyKey != 0) {
 					gp.playSE(3);
-					hasrubyKey--;
-					System.out.println("You have used a ruby Key to unlock the door!");
 					gp.obj[i] = null;
+					hasrubyKey--;
+					gp.ui.showMessage("The Door Has Been Unlocked With The Ruby Key!");
 				}
 				
 				break;
@@ -248,6 +255,12 @@ public void getPlayerImage() {
 				
 				break;
 
+			case "OBJ_chestFrontClosed":
+				gp.ui.gameFinished = true;
+				gp.stopMusic(i);
+				gp.playSE(4);
+				break;
+				
 			case "":
 				break;
 			}

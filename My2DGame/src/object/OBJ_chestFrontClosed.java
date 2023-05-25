@@ -8,10 +8,10 @@ public class OBJ_chestFrontClosed extends SuperObject{
 
 	public OBJ_chestFrontClosed() {
 		
-		name = "OBJ_chestLeftClosed";
+		name = "OBJ_chestFrontClosed";
 		try {
 			
-			image = ImageIO.read(getClass().getResourceAsStream("/objects/chestLeftClosed.png"));
+			image = ImageIO.read(getClass().getResourceAsStream("/objects/chestFrontClosed.png"));
 			
 		}catch(IOException e) {
 			e.printStackTrace();
